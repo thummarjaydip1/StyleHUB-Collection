@@ -1,0 +1,48 @@
+{% load static %}
+
+{% include 'header.html' %}
+<section class="bg-gray-50 py-4 px-6">
+    <div class="max-w-5xl mx-auto text-center">
+
+        <h2 class="text-4xl font-extrabold text-gray-800 tracking-wide">
+            About Us <span class="text-blue-600">StyleHUB</span>
+        </h2>
+
+        <div class="h-1 w-24 bg-blue-600 mx-auto my-6 rounded-full"></div>
+
+        <div class="flex-1">
+            <img src="{% static 'img/about1.jpeg' %}" alt="StyleHUB Fashion" 
+                 class="rounded-2xl shadow-lg w-full object-cover">
+        </div>
+
+        <div class="flex-1 text-center md:text-left">
+
+        <p class="text-lg text-gray-600 leading-relaxed py-3 mb-6">
+            At <span class="font-semibold text-gray-800">StyleHUB</span>, clothing is more than just what you wear —
+            it’s how you express yourself. We believe every outfit should reflect
+            <span class="font-semibold text-gray-800">confidence, comfort, and personal style</span>.
+        </p>
+
+        <p class="text-lg text-gray-600 leading-relaxed mb-6">
+            Built on trust and quality, our collections are thoughtfully designed to
+            blend classic fashion with modern trends. From stylish ethnic wear to
+            comfortable everyday clothing and trend-driven modern outfits, each
+            garment is crafted with attention to detail, fit, and fabric.
+        </p>
+
+        <p class="text-lg text-gray-600 leading-relaxed">
+            Whether you’re dressing for special occasions or upgrading your daily
+            wardrobe, <span class="font-semibold text-gray-800">StyleHUB</span> offers
+            clothing that feels as good as it looks.
+        </p>
+
+        <div class="mt-10">
+            <span class="inline-block bg-blue-600 text-white px-6 py-3 rounded-full text-lg font-semibold shadow-lg">
+                StyleHUB — Where quality clothing meets modern style
+            </span>
+        </div>
+
+    </div>
+</section>
+
+{% include 'footer.html' %}

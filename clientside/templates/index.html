@@ -1,0 +1,97 @@
+{% load static %}
+{% include 'header.html' %}
+
+<section class="relative w-full h-screen bg-gray-100 py-10">
+
+    <div class="absolute inset-0">
+        <img src="{% static 'img/home1.jpeg' %}" 
+             alt="StyleHUB" 
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div> 
+    </div>
+
+    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+        <h1 class="text-4xl font-extrabold text-white drop-shadow-lg">
+            Welcome to <span class="text-blue-500">StyleHUB</span>
+        </h1>
+        <p class="mt-4 text-lg text-white/90 max-w-xl">
+            Discover fashion that speaks confidence, comfort, and modern style.
+        </p>
+        <a href="{% url 'about' %}" 
+           class="mt-8 inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold px-8 py-3 rounded-full shadow-lg transition">
+            Explore Now
+        </a>
+    </div>
+
+</section>
+
+{% comment %} boy {% endcomment %}
+<section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-3xl font-bold text-gray-800 mb-6">Our Collections</h2>
+    
+        <div class="flex space-x-6 overflow-x-auto py-4 scrollbar-hide">
+
+            <div class="flex-none w-64 bg-white rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+            <img src="{% static 'img/home-boy-1.jpeg' %}" 
+                alt="Card 1" 
+                class="w-full h-80 object-contain rounded-t-xl bg-gray-100">
+            </div>
+
+            <div class="flex-none w-64 bg-white rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+            <img src="{% static 'img/home-boy-2.jpeg' %}" 
+                alt="Card 2" 
+                class="w-full h-80 object-contain rounded-t-xl bg-gray-100">
+            </div>
+
+            <div class="flex-none w-64 bg-white rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+            <img src="{% static 'img/home-boy-3.jpeg' %}" 
+                alt="Card 3" 
+                class="w-full h-80 object-contain rounded-t-xl bg-gray-100">
+            </div>
+
+            <div class="flex-none w-64 bg-white rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+            <img src="{% static 'img/home-boy-4.jpeg' %}" 
+                alt="Card 4" 
+                class="w-full h-80 object-contain rounded-t-xl bg-gray-100">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% comment %} gilrs {% endcomment %}
+<section class="bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6">
+    
+        <div class="flex space-x-6 overflow-x-auto py-4 scrollbar-hide">
+
+            <div class="flex-none w-64 bg-white rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+            <img src="{% static 'img/home-girl-1.jpeg' %}" 
+                alt="Card 1" 
+                class="w-full h-80 object-contain rounded-t-xl bg-gray-100">
+            </div>
+
+            <div class="flex-none w-64 bg-white rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+            <img src="{% static 'img/home-girl-2.jpeg' %}" 
+                alt="Card 2" 
+                class="w-full h-80 object-contain rounded-t-xl bg-gray-100">
+            </div>
+
+            <div class="flex-none w-64 bg-white rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+            <img src="{% static 'img/home-girl-3.jpeg' %}" 
+                alt="Card 3" 
+                class="w-full h-80 object-contain rounded-t-xl bg-gray-100">
+            </div>
+
+            <div class="flex-none w-64 bg-white rounded-xl shadow-lg hover:scale-105 transition-transform duration-300">
+            <img src="{% static 'img/home-girl-4.jpeg' %}" 
+                alt="Card 4" 
+                class="w-full h-80 object-contain rounded-t-xl bg-gray-100">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% include 'footer.html' %}

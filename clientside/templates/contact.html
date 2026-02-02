@@ -1,0 +1,72 @@
+{% include 'header.html' %}
+
+<div class="bg-gray-200 py-8">
+    <div class="flex flex-col md:flex-row gap-6 max-w-6xl mx-auto px-6">
+
+        <div class="bg-white shadow-lg rounded-xl p-6 md:w-1/2">
+            <p class="text-2xl font-bold mb-4 text-center">Our Contact Info</p>
+            <p class="mb-3"><strong>Address:</strong> 123 Main Street, Bagasara, Amreli, Gujarat.</p>
+            <p class="mb-3"><strong>Email:</strong> info@example.com</p>
+            <p class="mb-3"><strong>Phone:</strong> +91 98765 43210</p>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-xl p-6 md:w-1/2">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d23391.898152800084!2d70.93272423546223!3d21.489092443537633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2sin!4v1768909760011!5m2!1sen!2sin"
+                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" class="rounded-lg shadow-lg">
+            </iframe>
+        </div>
+
+    </div>
+</div>
+
+<div class="bg-gray-200 py-8">
+    <div class="bg-white shadow-lg rounded-xl p-6 max-w-md mx-auto">
+
+        <form method="post" action="">
+            {% csrf_token %}
+
+            <p class="text-2xl font-bold text-center mb-4">Contact Us</p>
+
+            {% if messages %}
+                <div class="max-w-4xl mx-auto mt-4">
+                    {% for message in messages %}
+                        <div class="mb-3 px-4 py-3 border rounded text-gray-800 bg-gray-100">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <label class="font-semibold">Enter Name:</label>
+            <input type="text" placeholder="Enter Name" name="name"
+                   class="border border-gray-400 shadow mt-1 p-2 rounded w-full" required>
+
+            <label class="font-semibold mt-3">Enter E-mail:</label>
+            <input type="email" placeholder="Enter Email" name="email"
+                   class="border border-gray-400 shadow mt-1 p-2 rounded w-full" required>
+
+            <label class="font-semibold mt-3">Enter Mobile No:</label>
+            <input type="text" placeholder="Enter Mobile No" name="mobile"
+                   class="border border-gray-400 shadow mt-1 p-2 rounded w-full" required>
+
+            <label class="font-semibold mt-3">Enter Subject:</label>
+            <input type="text" placeholder="Enter Subject" name="subject"
+                   class="border border-gray-400 shadow mt-1 p-2 rounded w-full" required>
+
+            <label class="font-semibold mt-3">Enter Message:</label>
+            <textarea rows="4" placeholder="Enter message" name="message"
+                      class="border border-gray-400 shadow mt-1 p-2 rounded w-full" required></textarea>
+
+            <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-700 mt-4 p-2 rounded text-white w-full font-semibold">
+                Send
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+{% include 'footer.html' %}

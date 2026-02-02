@@ -1,0 +1,58 @@
+{% include 'header.html' %}
+
+<div class="bg-gray-200 min-h-screen flex items-center justify-center p-6">
+
+    <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
+
+        <form method="post" action="">
+            {% csrf_token %} 
+
+            <p class="text-2xl font-bold text-center mb-6">Feedback</p>
+
+            {% if messages %}
+                <div class="max-w-4xl mx-auto mt-4">
+                    {% for message in messages %}
+                        <div class="mb-3 px-4 py-3 border rounded text-gray-800 bg-gray-100">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <label class="font-semibold">Enter Name:</label>
+            <input type="text" placeholder="Enter Username" name="name"
+                   class="border border-gray-400 shadow mt-2 p-2 rounded w-full" required>
+
+            <label class="font-semibold mt-4">Enter E-mail:</label>
+            <input type="email" placeholder="Enter Email" name="email"
+                   class="border border-gray-400 shadow mt-2 p-2 rounded w-full" required>
+
+            <label class="font-semibold mt-4">Enter Mobile No:</label>
+            <input type="text" placeholder="Enter Mobile No" name="mobile"
+                   class="border border-gray-400 shadow mt-2 p-2 rounded w-full" required>
+
+            <label class="font-semibold mt-4">Rating:</label>
+            <select class="border border-gray-400 shadow mt-2 p-2 rounded w-full" name="rating" required>
+                <option value="">Select Rating</option>
+                <option value="excellent">Excellent</option>
+                <option value="good">Good</option>
+                <option value="poor">Poor</option>
+                <option value="no excuse">No Excuse</option>
+            </select>
+
+            <label class="font-semibold mt-4">Enter Message:</label>
+            <textarea rows="4" placeholder="Enter message" name="message"
+                      class="border border-gray-400 shadow mt-2 p-2 rounded w-full" required></textarea>
+
+            <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-700 mt-6 p-2 rounded text-white w-full font-semibold">
+                Submit Feedback
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% include 'footer.html' %}

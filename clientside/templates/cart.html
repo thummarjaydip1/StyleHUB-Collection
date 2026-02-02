@@ -1,0 +1,46 @@
+{% include "header.html" %}
+
+<h2 class="text-2xl font-bold text-center text-gray-800 mb-6">My Cart</h2>
+
+<div class="max-w-4xl mx-auto space-y-4">
+
+{% if user.is_authenticated %}
+    {% if cart_items %}
+        {% for item in cart_items %}
+            <div class="flex items-center border rounded-lg p-4 shadow hover:shadow-md transition">
+                {% if item.product.image %}
+                    <div class="w-24 h-24 flex-shrink-0 mr-4">
+                        <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="w-full h-full object-contain">
+                    </div>
+                {% endif %}
+                <div class="flex-1">
+                    <p class="font-semibold text-lg text-gray-800">{{ item.product.name }}</p>
+                    <p class="text-gray-500">Qty: <span class="font-medium">{{ item.qty }}</span></p>
+                    <p class="text-green-600 font-bold text-lg">₹{{ item.product.price }}</p>
+                </div>
+                    <div class="flex gap-2 mt-2">
+                        <a href="{% url 'delete_cart' item.product.id %}"
+                        onclick="return confirm('Are you sure delete order?');" >
+                            <button class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
+                                Delete
+                            </button>
+                        </a>
+
+                        <form action="{% url 'order_form' item.product.id %}" method="get">
+                            <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
+                                Order Now
+                            </button>
+                        </form>
+
+                    </div>
+            </div>
+           
+        {% endfor %}
+    {% else %}
+        <p class="text-gray-500 text-center">Cart is empty</p>
+    {% endif %}
+{% endif %}
+
+</div>
+
+{% include "footer.html" %}

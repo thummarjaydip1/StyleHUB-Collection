@@ -1,0 +1,54 @@
+{% load static %}
+<script src="https://cdn.tailwindcss.com"></script>
+
+<header class="fixed top-0 left-0 w-full z-50 shadow-lg">
+    <div class="flex items-center justify-between px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500">
+        <h1 class="text-2xl font-extrabold text-white tracking-wide">
+            StyleHUB Collections Admin Panel
+        </h1>
+
+        {% if request.session.admin_username %}
+        <span class="text-white font-semibold">
+            Welcome, {{ request.session.admin_username }}
+        </span>
+        {% endif %}
+    </div>
+
+    <nav class="bg-blue-600">
+        <ul class="flex items-center justify-between px-10 h-16 text-white font-semibold text-lg">
+
+            <li class="hover:text-yellow-300 transition duration-300">
+                <a href="{% url 'admin_dashboard' %}">Dashboard</a>
+            </li>
+
+            <li class="hover:text-yellow-300 transition duration-300">
+                <a href="{% url 'admin_contact' %}">Contact</a>
+            </li>
+
+            <li class="hover:text-yellow-300 transition duration-300">
+                <a href="{% url 'admin_feedback' %}">Feedback</a>
+            </li>
+
+            <li class="hover:text-yellow-300 transition duration-300">
+                <a href="{% url 'admin_add_product' %}">Add Product</a>
+            </li>
+
+            <li class="hover:text-yellow-300 transition duration-300">
+                <a href="{% url 'admin_view_product' %}">View Product</a>
+            </li>
+
+            <li class="hover:text-yellow-300 transition duration-300">
+                <a href="{% url 'admin_orders' %}">View Order</a>
+            </li>
+
+            {% if request.session.admin_id %}
+            <a href="{% url 'admin_logout' %}"
+               class="px-4 py-2 rounded-xl bg-red-500 text-white font-bold hover:bg-red-600 transition">
+                Logout
+            </a>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+<div class="h-40"></div>

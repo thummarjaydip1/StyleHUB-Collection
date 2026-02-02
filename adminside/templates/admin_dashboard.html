@@ -1,0 +1,20 @@
+{% include "admin_header.html" %}
+<div class="grid grid-cols-3 gap-6 mb-10">
+
+    <div class="bg-purple-600 text-white rounded-xl shadow p-6 text-center">
+        <h2 class="text-lg font-semibold">Total Users</h2>
+        <p class="text-4xl font-bold mt-3">{{ total_users }}</p>
+    </div>
+
+    <div class="bg-blue-600 text-white rounded-xl shadow p-6 text-center">
+        <h2 class="text-lg font-semibold">Total Products</h2>
+        <p class="text-4xl font-bold mt-3">{{ total_products }}</p>
+    </div>
+
+    <div class="bg-green-600 text-white rounded-xl shadow p-6 text-center">
+        <h2 class="text-lg font-semibold">Total Orders</h2>
+        <p class="text-4xl font-bold mt-3">{{ total_orders }}</p>
+    </div>
+
+</div>
+{% include "admin_footer.html" %}

@@ -1,0 +1,43 @@
+{% include "admin_header.html" %}
+
+<h1 class="text-xl font-bold text-center mb-4">
+    Feedback List
+</h1>
+
+<div class="overflow-x-auto px-6">
+    <table class="w-full border border-gray-300 text-center text-sm">
+        <thead class="bg-gray-300">
+            <tr>
+                <th class="border px-3 py-2">Id</th>
+                <th class="border px-3 py-2">Name</th>
+                <th class="border px-3 py-2">E-mail</th>
+                <th class="border px-3 py-2">Mobile</th>
+                <th class="border px-3 py-2">Rating</th>
+                <th class="border px-3 py-2">Message</th>
+                <th class="border px-3 py-2">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for i in data %}
+            <tr class="hover:bg-gray-100">
+                <td class="border px-3 py-2">{{ i.id }}</td>
+                <td class="border px-3 py-2">{{ i.name }}</td>
+                <td class="border px-3 py-2">{{ i.email }}</td>
+                <td class="border px-3 py-2">{{ i.mobile }}</td>
+                <td class="border px-3 py-2">{{ i.rating }}</td>
+                <td class="border px-3 py-2">{{ i.message }}</td>
+                <td class="border px-4 py-2">
+                    <a href="{% url 'admin_feedback_delete' i.id %}"
+                       onclick="return confirm('Are you sure delete feedback?')"
+                       class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% include "admin_footer.html" %}

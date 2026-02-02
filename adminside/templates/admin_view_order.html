@@ -1,0 +1,60 @@
+{% include "admin_header.html" %}
+
+<div class="max-w-7xl mx-auto px-4">
+    <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">All Orders</h2>
+
+    {% if orders %}
+    <div class="overflow-x-auto">
+        <table class="min-w-full border border-gray-300 text-center divide-y divide-gray-200">
+            <thead class="bg-gray-100">
+                <tr>
+                    <th class="px-4 py-2">Image</th>
+                    <th class="px-4 py-2">Product</th>
+                    <th class="px-4 py-2">Size</th>
+                    <th class="px-4 py-2">Quantity</th>
+                    <th class="px-4 py-2">Price</th>
+                    <th class="px-4 py-2">Total</th>
+                    <th class="px-4 py-2">Mobile</th>
+                    <th class="px-4 py-2">Address</th>
+                    <th class="px-4 py-2">Status</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                {% for order in orders %}
+                <tr class="hover:bg-gray-50 transition">
+                    <td class="px-2 py-2">
+                        {% if order.product.image %}
+                            <img src="{{ order.product.image.url }}" 
+                                 alt="{{ order.product_name }}" 
+                                 class="w-16 h-16 object-cover mx-auto rounded">
+                        {% else %}
+                            <span>No Image</span>
+                        {% endif %}
+                    </td>
+                    <td class="px-4 py-2">{{ order.product_name }}</td>
+                    <td class="px-4 py-2">{{ order.size }}</td>
+                    <td class="px-4 py-2">{{ order.quantity }}</td>
+                    <td class="px-4 py-2">₹{{ order.price }}</td>
+                    <td class="px-4 py-2">₹{{ order.total_price }}</td>
+                    <td class="px-4 py-2">{{ order.mobile }}</td>
+                    <td class="px-4 py-2">{{ order.address }}</td>
+                    <td class="px-4 py-2">
+                        <span class="px-2 py-1 rounded
+                            {% if order.status == 'Pending' %} bg-yellow-200 text-yellow-800
+                            {% elif order.status == 'Confirmed' %} bg-green-200 text-green-800
+                            {% elif order.status == 'Cancelled' %} bg-red-200 text-red-800
+                            {% else %} bg-gray-200 text-gray-800 {% endif %}">
+                            {{ order.status }}
+                        </span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="text-center text-gray-600 mt-6">No orders found.</p>
+    {% endif %}
+</div>
+
+{% include "admin_footer.html" %}

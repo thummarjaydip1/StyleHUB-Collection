@@ -1,0 +1,82 @@
+{% include 'admin_header.html' %}
+
+<div class="bg-gray-200 min-h-screen flex items-center justify-center p-6">
+    <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <p class="text-2xl font-bold text-center mb-6">Update Product</p>
+
+            <label class="font-semibold">Product Name:</label>
+            <input type="text" name="name" value="{{ product.name }}"
+                   class="border border-gray-400 shadow mt-2 p-2 rounded w-full" required>
+
+            <label class="font-semibold mt-4">Category:</label>
+            <select name="category" id="category"
+                    class="border border-gray-400 shadow mt-2 p-2 rounded w-full"
+                    onchange="updateTypeOptions()" required>
+                <option value="">Select Category</option>
+                <option value="Boy" {% if product.category == "Boy" %}selected{% endif %}>Boy</option>
+                <option value="Girls" {% if product.category == "Girls" %}selected{% endif %}>Girls</option>
+            </select>
+
+            <label class="font-semibold mt-4">Type:</label>
+            <select name="type" id="type"
+                    class="border border-gray-400 shadow mt-2 p-2 rounded w-full" required>
+            </select>
+
+            <label class="font-semibold mt-4">Price:</label>
+            <input type="number" name="price" value="{{ product.price }}" step="0.01"
+                   class="border border-gray-400 shadow mt-2 p-2 rounded w-full" required>
+
+            {% if product.image %}
+            <label class="font-semibold mt-4">Current Image:</label>
+            <img src="{{ product.image.url }}" class="w-24 h-24 object-cover mt-2 mx-auto rounded">
+            {% endif %}
+
+            <label class="font-semibold mt-4">Change Image:</label>
+            <input type="file" name="image"
+                   class="border border-gray-400 shadow mt-2 p-2 rounded w-full"
+                   accept="image/*">
+
+            <button type="submit"
+                    class="bg-green-500 hover:bg-green-700 mt-6 p-2 rounded text-white w-full font-semibold">
+                Update Product
+            </button>
+        </form>
+
+    </div>
+</div>
+
+{% include 'admin_footer.html' %}
+
+<script>
+    const typeOptions = {
+        'Boy': ['boy-shirt', 'boy-tshirt', 'boy-jeans'],
+        'Girls': ['girls-shirt', 'girls-tshirt', 'girls-jeans']
+    };
+
+    function updateTypeOptions(selectedType = "{{ product.type }}") {
+        const category = document.getElementById('category').value;
+        const typeSelect = document.getElementById('type');
+        typeSelect.innerHTML = '<option value="">Select Type</option>';
+
+        if (typeOptions[category]) {
+            typeOptions[category].forEach(function(item){
+                const option = document.createElement('option');
+                option.value = item;
+                option.text = item;
+                if (item === selectedType) {
+                    option.selected = true;
+                }
+                typeSelect.appendChild(option);
+            });
+        }
+    }
+
+    // Auto load type on page load
+    window.onload = function () {
+        updateTypeOptions();
+    };
+</script>

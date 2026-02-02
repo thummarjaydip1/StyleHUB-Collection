@@ -1,0 +1,81 @@
+{% include 'admin_header.html' %}
+
+<div class="bg-gray-200 min-h-screen flex items-center justify-center p-6">
+
+    <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
+
+        <form method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <p class="text-2xl font-bold text-center mb-6">Add Product</p>
+
+            {% if messages %}
+                <div class="max-w-4xl mx-auto mt-4">
+                    {% for message in messages %}
+                        <div class="mb-3 px-4 py-3 border rounded text-gray-800 bg-gray-100">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+
+            <label class="font-semibold">Product Name:</label>
+            <input type="text" name="name" placeholder="Enter Product Name"
+                   class="border border-gray-400 shadow mt-2 p-2 rounded w-full" required>
+
+            <label class="font-semibold mt-4">Category:</label>
+            <select name="category" id="category"
+                    class="border border-gray-400 shadow mt-2 p-2 rounded w-full" required onchange="updateTypeOptions()">
+                <option value="">Select Category</option>
+                <option value="Boy">Boy</option>
+                <option value="Girls">Girls</option>
+            </select>
+
+            <label class="font-semibold mt-4">Type:</label>
+            <select name="type" id="type"
+                    class="border border-gray-400 shadow mt-2 p-2 rounded w-full" required>
+                <option value="">Select Type</option>
+            </select>
+
+            <label class="font-semibold mt-4">Price:</label>
+            <input type="number" name="price" step="0.01" placeholder="Enter Price"
+                   class="border border-gray-400 shadow mt-2 p-2 rounded w-full" required>
+
+            <label class="font-semibold mt-4">Product Image:</label>
+            <input type="file" name="image"
+                   class="border border-gray-400 shadow mt-2 p-2 rounded w-full" accept="image/*" required>
+
+            <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-700 mt-6 p-2 rounded text-white w-full font-semibold">
+                Add Product
+            </button>
+        </form>
+
+    </div>
+
+</div>
+
+{% include 'admin_footer.html' %}
+
+<script>
+    const typeOptions = {
+        'Boy': ['boy-shirt', 'boy-tshirt', 'boy-jeans'],
+        'Girls': ['girls-shirt', 'girls-tshirt', 'girls-jeans']
+    };
+
+    function updateTypeOptions() {
+        const category = document.getElementById('category').value;
+        const typeSelect = document.getElementById('type');
+        typeSelect.innerHTML = '<option value="">Select Type</option>'; 
+
+        if (typeOptions[category]) {
+            typeOptions[category].forEach(function(item){
+                const option = document.createElement('option');
+                option.value = item;
+                option.text = item;
+                typeSelect.appendChild(option);
+            });
+        }
+    }
+</script>
